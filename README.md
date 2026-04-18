@@ -12,7 +12,7 @@
 - 在写代码时能一眼看到当前 AI 助手状态
 - 把“看不见的执行过程”变成可感知的桌面反馈
 
-核心就是本地运行、本地监听、本地展示。
+它不是在线服务，也不依赖云部署；核心就是本地运行、本地监听、本地展示。
 
 ---
 
@@ -39,6 +39,35 @@
 - 主题与外观
   - 大小：`S/M/L`
   - 主题色预设与自定义十六进制色值
+
+---
+
+## 改进清单
+
+- **双来源状态（Codex + Cursor）**
+  - `auto` 模式同时监听 Codex session（`~/.codex/sessions/**/*.jsonl`）与 Cursor transcripts（`~/.cursor/projects/.../agent-transcripts/**/*.jsonl`）
+  - Cursor transcript 可用 `CURSOR_AGENT_TRANSCRIPTS_DIR` 手动指定监听目录
+- **三种连接模式与聚合**
+  - `auto / managed / external` 保留并可用
+  - 支持多来源聚合成单一桌宠状态（多 app-server / 多 transcript）
+- **更贴近编码行为的状态映射**
+  - `thinking`：规划/思考（例如文本包含 *planning next move*）
+  - `editing`：下载/搬运（桌宠表现为 `carrying`）
+  - `working`：写代码/执行（桌宠表现固定为 `building`）
+  - `success`：完成（桌宠表现为 `happy`）
+  - 完成时会先有一次提醒态（notification），再进入完成态（happy）
+- **防止“打开就执行中”的误判**
+  - `auto` 模式默认从文件末尾（EOF）增量监听，不重放历史尾部事件
+  - 支持实验回放：`DESK_AUTO_REPLAY_TAIL_BYTES`，或分别设置 `CODEX_SESSION_REPLAY_BYTES` / `CURSOR_TRANSCRIPT_REPLAY_BYTES`
+- **状态气泡增强**
+  - 支持简略/详细、距离调节、显示/隐藏
+  - 详细模式可标注来源（Codex / Cursor）
+- **托盘增强**
+  - 新增“一键复制当前状态摘要”（状态/来源/最近事件等，便于排查/分享）
+  - 新增全局快捷键 `Cmd/Ctrl + Shift + D` 一键打开状态看板
+- **工程与可用性修复**
+  - 增加本地 `npm run setup` 流程（安装依赖 + typecheck + build）
+  - 补齐打包依赖资源（如 `icon.png` 占位）并完善 `.gitignore`
 
 ---
 
