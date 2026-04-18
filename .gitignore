@@ -1,0 +1,45 @@
+/node_modules/
+
+# Build outputs
+/dist/
+/release/
+/tmp/
+/coverage/
+.cache/
+.turbo/
+.parcel-cache/
+*.tsbuildinfo
+
+# Generated data
+/.codex-generated/
+/events/
+/schemas/
+/codepet-plan.md
+/docs/*-plan.md
+
+# Local AI / editor state
+/.claude/
+/.cursor/
+/.vscode/
+/.idea/
+
+# Local duplicate workspace copy
+/codepet/
+
+# Environment files
+.env
+.env.*
+*.local
+
+# Logs
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS files
+.DS_Store
+**/.DS_Store
+Thumbs.db
