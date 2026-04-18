@@ -12,7 +12,7 @@
 - 在写代码时能一眼看到当前 AI 助手状态
 - 把“看不见的执行过程”变成可感知的桌面反馈
 
-它不是在线服务，也不依赖云部署；核心就是本地运行、本地监听、本地展示。
+核心就是本地运行、本地监听、本地展示。
 
 ---
 
@@ -150,39 +150,9 @@ scripts/                 monitor / dashboard / 辅助脚本
 
 ---
 
-## 如何做 README 截图（你可以做一个差不多的）
+## 截图预览
 
-建议把截图放到：
-
-```text
-docs/screenshots/dashboard.png
-```
-
-### 推荐拍法（macOS）
-
-1. 先启动：
-   - `npm run electron`
-   - `npm run dashboard`
-2. 把桌宠放在屏幕右下，气泡切到“详细”模式（更有信息量）
-3. 打开浏览器看板页（`http://127.0.0.1:4580`）
-4. 用系统截图快捷键：
-   - 区域截图：`Cmd + Shift + 4`
-5. 新建目录并移动截图：
-
-```bash
-mkdir -p docs/screenshots
-mv ~/Desktop/你的截图文件.png docs/screenshots/dashboard.png
-```
-
-6. 在 README 里使用：
-
-```md
-![codepet dashboard](docs/screenshots/dashboard.png)
-```
-
-如果你希望更“产品化”一点，可以再补两张图：  
-- 一张“桌宠 idle + 气泡”  
-- 一张“执行中（building/carrying）”
+![codepet screenshot](docs/screenshots/image.png)
 
 ---
 
